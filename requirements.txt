@@ -8,3 +8,4 @@ flask-bcrypt
 pymongo
 email-validator
 flask-login
+Flask-SQLAlchemy
