@@ -6,3 +6,4 @@ table temp page
 test.py
 .idea
 SQLAlchemy cheat sheet.py
+__pycache__/
