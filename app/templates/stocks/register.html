@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% block content %}
+
+
+    <main class="page registration-page" style="padding-top: 60px;">
+        <section class="clean-block clean-form dark"
+                 style="padding-bottom: 29px; background-color: rgba(246, 246, 246, 0);">
+            <div class="container" style="box-shadow: 0 0;">
+
+                <div class="block-heading" style="padding-top: 0; margin-bottom: 19px;">
+                    <h2 class="text-info">Sign up</h2>
+                </div>
+
+
+                <form method="post" action="">
+                    {{ form.csrf_token }}
+                    <div class="form-group">
+                        {% if form.email.errors %}
+                                {{ form.email.label }}
+                                {{ form.email(class="form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors.0 }}
+                                </div>
+
+                        {% else %}
+                            {{ form.email.label }}
+                            {{ form.email(class="form-control item", id="email") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                {{ form.password.label }}
+                                {{ form.password(class="form-control is-invalid form-control", id="password") }}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.password.label }}
+                            {{ form.password(class="form-control form-control", id="password") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {% if form.confirm_password.errors %}
+                                {{ form.confirm_password.label }}
+                                {{ form.confirm_password(class="form-control is-invalid form-control",  id="confirm-password") }}
+                                <div class="invalid-feedback">
+                                    {{ form.confirm_password.errors.0 }}
+                                </div>
+                        {% else %}
+                            {{ form.confirm_password.label }}
+                            {{ form.confirm_password(class="form-control item form-control item", id="confirm-password" ) }}
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="formCheck-1" required=""/>
+                            <label class="form-check-label" for="formCheck-1">
+                                I agree to the <a href="#">Terms and Conditions</a></label>
+                            {{ form.submit(class="btn btn-primary btn-block", type="submit", style="margin-top: 16px;") }}
+                        </div>
+                    </div>
+
+
+                    <div style="text-align: center; margin-top: 8px;">
+                        <span class="text-muted" style="font-size: 14px;">Already a member?<a href="{{ url_for('stocks.login') }}"> Log in</a></span>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
+
+

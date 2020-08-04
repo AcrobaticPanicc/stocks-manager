@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+
+    <main class="page login-page" style="padding-top: 60px;">
+        <section class="clean-block clean-form dark"
+                 style="padding-bottom: 13px; background-color: rgba(246, 246, 246, 0);">
+            <div class="container">
+                <div class="block-heading" style="padding-top: 0; margin-bottom: 19px;">
+                    <h2 class="text-info">Reset Password</h2>
+                </div>
+
+
+                <form method="post" action="">
+                    <h6 class="text-primary"><i class="fa fa-info-circle"></i> Enter your email to reset your password</h6>
+                    {{ form.csrf_token }}
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        {% if form.email.errors %}
+                            {{ form.email.label }}
+                            {{ form.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {{ form.email.errors.0 }}
+                            </div>
+
+                        {% else %}
+                            {{ form.email.label }}
+                            {{ form.email(class="form-control item", id="email", autofocus="") }}
+                        {% endif %}
+                    </div>
+
+
+                    {{ form.submit(class="btn btn-primary btn-block", type="submit", style="margin-top: 16px;") }}
+
+                    <hr>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
+
+

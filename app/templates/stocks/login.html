@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block content %}
+
+    <main class="page login-page" style="padding-top: 60px;">
+        <section class="clean-block clean-form dark"
+                 style="padding-bottom: 13px; background-color: rgba(246, 246, 246, 0);">
+            <div class="container">
+                <div class="block-heading" style="padding-top: 0; margin-bottom: 19px;">
+                    <h2 class="text-info">Log In</h2>
+                </div>
+
+                <form method="post" action="">
+                    {{ form.csrf_token }}
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        {% if form.email.errors %}
+                            {{ form.email.label }}
+                            {{ form.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {{ form.email.errors.0 }}
+                            </div>
+
+                        {% else %}
+                            {{ form.email.label }}
+                            {{ form.email(class="form-control item", id="email", autofocus="") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        {% if form.password.errors %}
+                            {% for error in form.password.errors %}
+                                {{ form.password.label }}
+                                {{ form.password(class="form-control is-invalid form-control", id="password") }}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.password.label }}
+                            {{ form.password(class="form-control form-control", id="password") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkbox"/>
+                            <label class="form-check-label" for="checkbox">Remember me</label>
+                        </div>
+                    </div>
+
+                    {{ form.submit(class="btn btn-primary btn-block", type="submit", style="margin-top: 16px;") }}
+
+                    <hr>
+                    <div style="margin-top: 8px; text-align: center;">
+                            <span class="text-muted" style="font-size: 14px;">
+                                Don't have an account? <a href="{{ url_for('stocks.register') }}">Sign Up.</a>
+                            </span>
+                    </div>
+
+
+                    <div style="margin-top: 8px; text-align: center;">
+                            <span class="text-muted" style="font-size: 14px;">
+                               Forgot your password? <a href="#">Click here.</a>
+                            </span>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
+
+

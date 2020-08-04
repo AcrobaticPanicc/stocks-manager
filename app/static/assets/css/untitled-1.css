@@ -1,0 +1,13 @@
+.btn-outline-light:not(:disabled):not(.disabled).active:focus, .btn-outline-light:not(:disabled):not(.disabled):active:focus, .show > .btn-outline-light.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(248,249,250,.5);
+}
+
+body, html {
+  background-color: #264653;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+

@@ -1,0 +1,132 @@
+@media (min-width: 768px) {
+    #table-card {
+        padding: 0 40px 0 40px;
+    }
+}
+
+#check {
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#stock_symbol {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#price-at-purchase {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#num-of-shares {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.table thead th {
+    width: 167px;
+}
+
+.navbar.navbar-light.navbar-expand-md.fixed-top.bg-dark.clean-navbar {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 5;
+}
+
+thead {
+    background-color: #15616d;
+    border: 32px;
+    font-style: normal;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgb(255, 241, 230);
+}
+
+.btn:not(:disabled):not(.disabled) {
+    /*box-shadow: none;*/
+}
+
+
+nav {
+    margin-bottom: 26px;
+}
+
+.portfolio-table {
+    margin-top: 80px;
+}
+
+#stock-img {
+    max-width: 16%;
+    height: auto;
+}
+
+#add-stock-btn {
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(38, 166, 154);
+}
+
+#close-modal-btn {
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(254, 109, 115);
+}
+
+#add-stock-btn {
+    border: None;
+}
+
+#stock-img-td {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#trash-btn {
+    border: none;
+    background: transparent;
+    color: #ff4846;
+    outline: none;
+}
+
+td.val.r {
+    color: #ef7156;
+}
+
+td.val.g {
+    color: #00b35c;
+}
+
+.table-responsive {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+#add-stocks-alert {
+    width: 30%;
+    margin: 0 auto 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+#confirm-password {
+    box-shadow: none;
+}
+
+.alert-success {
+    display: inline-block;
+}
+
+.alert-danger {
+    display: inline-block;
+}
+
+.block-heading {
+    margin-top: 40px;
+}
+
