@@ -1,0 +1,197 @@
+{% extends "base.html" %} {% block content %}
+
+    <div class="card portfolio-table" id="table-card">
+        {% if stocks|length < 1 %}
+            <div class="alert alert-success" role="alert" id="add-stocks-alert">
+                <h4><i class="fa fa-info-circle"></i>
+                    Add stocks to start
+                </h4>
+                <hr/>
+                <p>
+                    Click on the Add Stocks button to start your portfolio
+                </p>
+            </div>
+            <div class="add-stock-btn-div">
+                <button class="btn btn-light text-dark" data-toggle="modal" data-target="#add-stock-modal"
+                        type="submit">
+                    Add Stock
+                </button>
+            </div>
+        {% else %}
+            <div class="card-body text-center">
+            <div>
+                <h1 id="title">Your portfolio</h1>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover table-borderless">
+                    <thead>
+                        <tr id="cols">
+                            <th></th>
+                            <th id="symbol-head">Symbol</th>
+                            <th>Stock</th>
+                            <th id="quantity-head">Quantity</th>
+                            <th id="value-head">Value</th>
+                            <th id="profit-loss-head">Profit/Loss</th>
+                            <th id="change-from-buy-head">Change from buy</th>
+                            <th id="trash-col"></th>
+                        </tr>
+                    </thead>
+
+                    {% for stock in stocks %}
+                        {% set stock_yield = Stock.get_yield_of_single_stock(stock) %}
+                        {% set profit_prec = stock_yield['profit_prec'] %}
+                        {% set profit_in_usd = stock_yield['profit_in_usd'] %}
+
+                        <tbody id="table-body">
+
+                            <tr class="text-nowrap myDIV">
+                                <td id="stock-img-td"><img id="stock-img" src="{{ stock.logo }}" alt=""/></td>
+                                <td class="text-uppercase">{{ stock.stock_symbol }}</td>
+                                <td>{{ stock.full_name }}</td>
+                                <td class="n-val">
+                                    <div class="num-container">
+                                        {{ "{:,.2f}".format(stock.shares) }}
+                                    </div>
+                                </td>
+                                <td class="n-val">
+                                    <div class="num-container">
+                                        <span>$ </span>{{ "{:,.2f}".format(stock_yield['total_value']) }}
+                                    </div>
+                                </td>
+
+                                <td class="num n-val">
+                                    <div class="num-container">
+                                        <span>$</span> {{ "{:,.2f}".format(profit_in_usd)|string }}
+                                    </div>
+                                </td>
+                                <td class="num n-val">
+                                    <div class="num-container">
+                                        {{ profit_prec|string + '%' }}
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <form class="del_form" action="remove_stock" method="POST">
+                                        <input type="hidden" name="stock_id" value="{{ stock.id }}"/>
+                                        <button id="trash-btn">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+
+                    <tr class="table-info blue-grey darken-3 total">
+                        <td>Total</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="n-val">
+                            <div class="num-container">
+                                <span>$ </span>{{ "{:,.2f}".format(total.value) }}
+                            </div>
+                        </td>
+                        <td class="num n-val">
+                            <div class="num-container">
+                                <span>$ </span>{{ "{:,.2f}".format(total.profit_loss)|string }}
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="add-stock-btn-div">
+                <button class="btn btn-light text-dark" data-toggle="modal"
+                        data-target="#add-stock-modal" type="submit">
+                    Add Stock
+                </button>
+            </div>
+
+        {% endif %}
+
+
+        <div>
+            <div class="text-center" id="modal-open">
+                <div class="modal fade" role="dialog" tabindex="-1" id="add-stock-modal"
+                     aria-labelledby="add-stock-modalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add a Stock <i class="fa fa-plus"></i></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form method="post" action="">
+                                    {{ form.csrf_token }}
+                                    <div class="text-left">
+                                        <span><i
+                                                class="icon ion-ios-pricetags"></i> {{ form.stock_symbol.label(for="stock-symbol") }}</span>
+
+                                        {% if form.stock_symbol.errors %}
+                                            {{ form.stock_symbol(id="stock-symbol", class="form-control is-invalid autofocus=""") }}
+                                            <div class="invalid-feedback">
+                                                {{ form.stock_symbol.errors.0 }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.stock_symbol(id="stock-symbol", class="form-control item") }}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="text-left">
+                                            <span>
+                                                <i class="fas fa-dollar-sign"></i>
+                                                {{ form.purchase_price.label() }}
+                                            </span>
+
+                                        {% if form.purchase_price.errors %}
+                                            {{ form.purchase_price(class="form-control is-invalid", id="price-at-purchase") }}
+                                            <div class="invalid-feedback">
+                                                {{ form.purchase_price.errors.0 }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.purchase_price(class="form-control item", id="price-at-purchase") }}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="text-left">
+                                            <span>
+                                                <i class="fas fa-hashtag"></i>
+                                                {{ form.num_of_shares.label() }}
+                                            </span>
+
+                                        {% if form.num_of_shares.errors %}
+                                            {{ form.num_of_shares(class="form-control is-invalid", id="num-of-shares") }}
+                                            <div class="invalid-feedback">
+                                                {{ form.num_of_shares.errors.0 }}
+                                            </div>
+                                        {% else %}
+                                            {{ form.num_of_shares(class="form-control item", id="num-of-shares") }}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-warning" data-dismiss="modal" id="close-modal-btn"
+                                                type="button">
+                                            Close
+                                        </button>
+                                        {{ form.submit(id="add-stock-btn", type="submit", class="btn") }}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+

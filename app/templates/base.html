@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Stock Manager Pro</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:300,400"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/ionicons.min.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/simple-line-icons.min.css') }}"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/smoothproducts.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}"/>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-light navbar-expand-md fixed-top bg-dark clean-navbar">
+            <div class="container-fluid"><a class="navbar-brand text-white logo" href="">Stock Manager Pro</a>
+                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                    <span class="sr-only">
+                        Toggle navigation
+                    </span>
+                    <span
+                            class="navbar-toggler-<icon>">
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        {% if g.user %}
+                            <li class="nav-item" role="presentation" style="padding-right: 4px;">
+                                <a class="nav-link text-capitalize text-white" href="{{ url_for('stocks.logout') }}">
+                                    Logout
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item" role="presentation" style="padding-right: 4px;">
+                                <a class="nav-link text-capitalize" href="{{ url_for('stocks.register') }}"
+                                   style="color: rgba(255,255,255,0.9);">
+                                    Register
+                                </a>
+                            </li>
+
+                            <li class="nav-item" role="presentation" style="padding-right: 4px;">
+                                <a class="nav-link text-capitalize text-white" href="{{ url_for('stocks.login') }}">
+                                    Login
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+
+        {% block content %}
+        {% endblock content %}
+
+        <div style="margin-top: 100px; margin-left: 10px">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <h6 class="alert {{ category }}" id="fade-alert">
+                            <i class="fa fa-info-circle"></i> {{ message }}
+                        </h6>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+        <script src="{{ url_for('static', filename='assets/js/smoothproducts.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/theme.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    </body>
+
+</html>
+
+

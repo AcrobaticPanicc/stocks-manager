@@ -1,0 +1,239 @@
+@media (min-width: 768px) {
+    #table-card {
+        padding: 0 40px 0 40px;
+    }
+}
+
+@media (min-width: 500px) {
+    tbody {
+        color: #181818;
+    }
+}
+
+#table-card {
+    border-width: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.card-body {
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.42);
+    background-color: #3e5160;
+    margin-top: 0;
+}
+
+#title {
+    color: rgb(255, 250, 246);
+}
+
+#symbol-head {
+    width: 20px;
+}
+
+#quantity-head {
+    width: 171px;
+}
+
+#value-head {
+    width: 173px;
+}
+
+#profit-loss-head {
+    width: 169px;
+}
+
+#change-from-buy-head {
+    width: 200px;
+}
+
+#trash-col {
+    width: 42px;
+    max-width: 37px;
+}
+
+#table-body {
+    background-color: #fffaf6;
+}
+
+.table {
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(33, 33, 33, 0.19) !important;
+
+}
+
+
+#cols {
+    color: rgb(255, 236, 209);
+    font-size: 16px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: normal;
+}
+
+.text-left {
+    margin-top: 20px;
+}
+
+#check {
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#stock_symbol {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#price-at-purchase {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#num-of-shares {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.table thead th {
+    width: 167px;
+}
+
+.navbar.navbar-light.navbar-expand-md.fixed-top.bg-dark.clean-navbar {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 5;
+}
+
+thead {
+    background-color: #253f47;
+    border: 32px;
+    font-style: normal;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgb(255, 241, 230);
+}
+
+.btn:not(:disabled):not(.disabled) {
+    /*box-shadow: none;*/
+}
+
+
+nav {
+    margin-bottom: 26px;
+}
+
+.portfolio-table {
+    margin-top: 80px;
+}
+
+#stock-img {
+    max-width: 15%;
+    height: auto;
+}
+
+#add-stock-btn {
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(38, 166, 154);
+}
+
+.add-stock-btn-div {
+    margin: auto;
+}
+
+#close-modal-btn {
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgb(254, 109, 115);
+}
+
+#add-stock-btn {
+    border: None;
+}
+
+#stock-img-td {
+    padding-right: 0;
+    padding-left: 0;
+    width: 20px;
+}
+
+#trash-btn {
+    border: none;
+    background: transparent;
+    color: #ff4846;
+    outline: none;
+    opacity: 0.6;
+}
+
+#trash-btn:hover {
+    opacity: 1;
+}
+
+td.num.r {
+    color: #ef7156;
+}
+
+td.num.g {
+    color: #00b35c;
+}
+
+.table-responsive {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+#add-stocks-alert {
+    width: 30%;
+    margin: 0 auto 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+#confirm-password {
+    box-shadow: none;
+}
+
+.alert-success {
+    display: inline-block;
+}
+
+.alert-danger {
+    display: inline-block;
+}
+
+.block-heading {
+    margin-top: 40px;
+}
+
+.btn-outline-light:not(:disabled):not(.disabled).active:focus, .btn-outline-light:not(:disabled):not(.disabled):active:focus, .show > .btn-outline-light.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(248, 249, 250, .5);
+}
+
+body, html {
+    background-color: #33424f;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#add-stock-btn-div {
+    padding-bottom: 500px;
+}
+
+.total {
+    pointer-events: none;
+}
+
+.n-val {
+    /*padding-right: 80px !important;*/
+    text-align: right;
+}
+
+.num-container {
+   text-align: right;
+   padding-right: 5%;
+}
