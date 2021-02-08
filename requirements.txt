@@ -16,7 +16,7 @@ flask-oidc==1.4.0
 Flask-SQLAlchemy==2.4.4
 Flask-User==1.0.2.2
 Flask-WTF==0.14.3
-httplib2==0.18.1
+httplib2==0.19.0
 idna==2.10
 importchecker==2.0
 itsdangerous==1.1.0
